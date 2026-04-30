@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyGameList - Rastreador de Jogos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+  </head>
+  <body>
+    <div id="app">
+      <header class="header glass-effect">
+        <div class="logo">
+          <span class="logo-icon">🎮</span>
+          <h1>MyGameList</h1>
+        </div>
+        <div class="search-bar">
+          <input type="text" id="searchInput" placeholder="Buscar jogos..." />
+          <button id="searchBtn">🔍</button>
+        </div>
+        <div class="profile-menu">
+          <img src="https://ui-avatars.com/api/?name=User&background=252525&color=fff" alt="Perfil" class="avatar" />
+        </div>
+      </header>
+
+      <div class="main-container">
+        <aside class="sidebar glass-effect">
+          <nav>
+            <ul id="category-nav">
+              <li class="active" data-category="all"><span>🏠</span> Todos</li>
+              <li data-category="playing"><span class="status-icon playing"></span> Jogando</li>
+              <li data-category="plan"><span class="status-icon plan"></span> Jogarei a seguir</li>
+              <li data-category="future"><span class="status-icon future"></span> Futuramente</li>
+              <li data-category="dropped"><span class="status-icon dropped"></span> Dropados</li>
+              <li data-category="completed"><span class="status-icon completed"></span> Finalizados</li>
+              <li data-category="plan-platinum"><span class="status-icon plan-platinum"></span> Irei platinar / 100%</li>
+              <li data-category="platinum"><span class="status-icon platinum"></span> 100% / Platinados</li>
+            </ul>
+          </nav>
+        </aside>
+
+        <main class="content">
+          <div class="content-header">
+            <h2 id="current-category-title">Todos os Jogos</h2>
+            <button id="add-game-btn" class="btn-primary">+ Adicionar Jogo</button>
+          </div>
+          
+          <div class="game-grid" id="game-grid">
+            <!-- Game cards will be injected here by JS -->
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Modal Adicionar/Editar Jogo -->
+    <div id="game-modal" class="modal hidden">
+      <div class="modal-content glass-effect">
+        <div class="modal-header">
+          <h3 id="modal-title">Adicionar Jogo</h3>
+          <button id="close-modal" class="close-btn">&times;</button>
+        </div>
+        <form id="game-form">
+          <input type="hidden" id="game-id" />
+          <div class="form-group">
+            <label for="game-title">Título do Jogo</label>
+            <input type="text" id="game-title" required />
+          </div>
+          <div class="form-group">
+            <label for="game-image">URL da Capa (Imagem)</label>
+            <input type="url" id="game-image" placeholder="https://exemplo.com/capa.jpg" required />
+          </div>
+          <div class="form-group">
+            <label for="game-status">Status</label>
+            <select id="game-status" required>
+              <option value="playing">Jogando</option>
+              <option value="plan">Jogarei a seguir</option>
+              <option value="future">Futuramente</option>
+              <option value="dropped">Dropados</option>
+              <option value="completed">Finalizados</option>
+              <option value="plan-platinum">Irei platinar / 100%</option>
+              <option value="platinum">100% / Platinados</option>
+            </select>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Salvar Jogo</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
